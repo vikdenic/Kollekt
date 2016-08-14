@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScaledVisibleCellsCollectionView
 
 class ViewController: UIViewController {
 
@@ -14,11 +15,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        collectionView.setScaledDesginParam(scaledPattern: .horizontalCenter, maxScale: 1.2, minScale: 0.5, maxAlpha: 1.0, minAlpha: 0.75)
+        collectionView.delegate = self
+        collectionView.dataSource = self
     }
 
 }
-
+// MARK: - UICollectionView..
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -31,4 +34,12 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return 10
     }
 
+}
+
+// MARK: - UIScrollViewDelegate
+extension ViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        collectionView.scaledVisibleCells()
+    }
 }
