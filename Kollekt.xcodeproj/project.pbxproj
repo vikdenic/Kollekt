@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		930B7BA21D604229009D8280 /* ScaleHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 930B7BA11D604229009D8280 /* ScaleHelper.m */; };
 		932CF0AB1D5FF4A0005DCA1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932CF0AA1D5FF4A0005DCA1F /* AppDelegate.swift */; };
 		932CF0AD1D5FF4A0005DCA1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932CF0AC1D5FF4A0005DCA1F /* ViewController.swift */; };
 		932CF0B01D5FF4A0005DCA1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 932CF0AE1D5FF4A0005DCA1F /* Main.storyboard */; };
@@ -15,6 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930B7B9F1D604229009D8280 /* Kollekt-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Kollekt-Bridging-Header.h"; sourceTree = "<group>"; };
+		930B7BA01D604229009D8280 /* ScaleHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScaleHelper.h; sourceTree = "<group>"; };
+		930B7BA11D604229009D8280 /* ScaleHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScaleHelper.m; sourceTree = "<group>"; };
 		932CF0A71D5FF4A0005DCA1F /* Kollekt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kollekt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		932CF0AA1D5FF4A0005DCA1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		932CF0AC1D5FF4A0005DCA1F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,9 @@
 				932CF0B11D5FF4A0005DCA1F /* Assets.xcassets */,
 				932CF0B31D5FF4A0005DCA1F /* LaunchScreen.storyboard */,
 				932CF0B61D5FF4A0005DCA1F /* Info.plist */,
+				930B7BA01D604229009D8280 /* ScaleHelper.h */,
+				930B7BA11D604229009D8280 /* ScaleHelper.m */,
+				930B7B9F1D604229009D8280 /* Kollekt-Bridging-Header.h */,
 			);
 			path = Kollekt;
 			sourceTree = "<group>";
@@ -148,6 +155,7 @@
 			files = (
 				932CF0AD1D5FF4A0005DCA1F /* ViewController.swift in Sources */,
 				932CF0AB1D5FF4A0005DCA1F /* AppDelegate.swift in Sources */,
+				930B7BA21D604229009D8280 /* ScaleHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +276,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 3DJPBY6593;
 				INFOPLIST_FILE = Kollekt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikzilla.Kollekt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kollekt/Kollekt-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -282,12 +293,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 3DJPBY6593;
 				INFOPLIST_FILE = Kollekt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vikzilla.Kollekt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kollekt/Kollekt-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ScaledVisibleCellsCollectionView
 
 class ViewController: UIViewController {
 
@@ -33,7 +32,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         } else {
             cell.transform = transformCellValue
         }
-
         return cell
     }
 
@@ -43,63 +41,22 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
 }
 
+extension ViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        let xInset = (UIScreen.main.bounds.width / 2) - 200 / 2
+        return UIEdgeInsets(top: 0, left: xInset, bottom: 0, right: xInset)
+    }
+
+}
+
 // MARK: - UIScrollViewDelegate
 extension ViewController: UIScrollViewDelegate {
 
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-
-        let pageWidth = CGFloat(200 + 30) //cellWidth + interItemLineSpacing
-
-        let currentOffset = scrollView.contentOffset.x
-        let targetOffset = targetContentOffset.pointee.x
-        var newTargetOffset = CGFloat(0)
-
-        if targetOffset > currentOffset {
-            newTargetOffset = CGFloat(ceilf(Float((currentOffset / pageWidth) * pageWidth)))
-        } else {
-            newTargetOffset = CGFloat(ceilf(Float((currentOffset / pageWidth) * pageWidth)))
-        }
-
-        if newTargetOffset < 0 {
-            newTargetOffset = 0
-        } else if newTargetOffset > scrollView.contentSize.width {
-            newTargetOffset = scrollView.contentSize.width
-        }
-
-        targetContentOffset.pointee.x = currentOffset
-        scrollView.setContentOffset(CGPoint(x: newTargetOffset, y: 0), animated: true)
-
-        var index = Int(newTargetOffset / pageWidth)
-
-        if index == 0 { //If first index
-            var cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-
-            UIView.animate(withDuration: animationSpeed, animations: { 
-                cell?.transform = .identity
-            })
-            cell = collectionView.cellForItem(at: IndexPath(item: index + 1, section: 0))
-            UIView.animate(withDuration: animationSpeed, animations: {
-                cell?.transform = self.transformCellValue
-            })
-        } else {
-            var cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-            UIView.animate(withDuration: animationSpeed, animations: {
-                cell?.transform = .identity
-            })
-            index -= 1 //left
-            cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-            UIView.animate(withDuration: animationSpeed, animations: {
-                cell?.transform = self.transformCellValue
-            })
-
-            index += 1
-            index += 1
-            cell = collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-            UIView.animate(withDuration: animationSpeed, animations: {
-                cell?.transform = self.transformCellValue
-            })
-        }
+        ScaleHelper.scrollViewWillEndDragging(scrollView, for: collectionView, withVelocity: velocity, targetContentOffset: targetContentOffset, transformCellValue: transformCellValue, animationSpeed: animationSpeed)
     }
+    
 }
 
 
