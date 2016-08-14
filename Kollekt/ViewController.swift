@@ -15,7 +15,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.setScaledDesginParam(scaledPattern: .horizontalCenter, maxScale: 1.2, minScale: 0.5, maxAlpha: 1.0, minAlpha: 0.75)
+        collectionView.setScaledDesginParam(scaledPattern: .horizontalCenter, maxScale: 1.1, minScale: 0.7, maxAlpha: 1.0, minAlpha: 0.5)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
