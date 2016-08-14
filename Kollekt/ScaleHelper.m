@@ -12,7 +12,7 @@
 
 + (void)scrollViewWillEndDragging:(UIScrollView *)scrollView forCollectionView:(UICollectionView *)collectionView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
-    float pageWidth = 200 + 30; // width + space
+    float pageWidth = 250 + 10; // width + space
 
     float currentOffset = scrollView.contentOffset.x;
     float targetOffset = targetContentOffset->x;

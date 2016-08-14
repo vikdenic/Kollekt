@@ -44,7 +44,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let xInset = (UIScreen.main.bounds.width / 2) - 200 / 2
+        let xInset = (UIScreen.main.bounds.width / 2) - 250 / 2
         return UIEdgeInsets(top: 0, left: xInset, bottom: 0, right: xInset)
     }
 
