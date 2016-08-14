@@ -10,7 +10,7 @@
 
 @implementation ScaleHelper
 
-+ (void)scrollViewWillEndDragging:(UIScrollView *)scrollView forCollectionView:(UICollectionView *)collectionView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset transformCellValue:(CGAffineTransform)transformCellValue animationSpeed:(double)animationSpeed
++ (void)scrollViewWillEndDragging:(UIScrollView *)scrollView forCollectionView:(UICollectionView *)collectionView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
 {
     float pageWidth = 200 + 30; // width + space
 
@@ -31,38 +31,6 @@
 
     targetContentOffset->x = currentOffset;
     [scrollView setContentOffset:CGPointMake(newTargetOffset, 0) animated:YES];
-
-    int index = newTargetOffset / pageWidth;
-
-    if (index == 0) { // If first index
-        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index  inSection:0]];
-
-        [UIView animateWithDuration:animationSpeed animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        }];
-        cell = [collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index + 1  inSection:0]];
-        [UIView animateWithDuration:animationSpeed animations:^{
-            cell.transform = transformCellValue;
-        }];
-    }else{
-        UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-        [UIView animateWithDuration:animationSpeed animations:^{
-            cell.transform = CGAffineTransformIdentity;
-        }];
-
-        index --; // left
-        cell = [collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-        [UIView animateWithDuration:animationSpeed animations:^{
-            cell.transform = transformCellValue;
-        }];
-
-        index ++;
-        index ++; // right
-        cell = [collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-        [UIView animateWithDuration:animationSpeed animations:^{
-            cell.transform = transformCellValue;
-        }];
-    }
 }
 
 @end

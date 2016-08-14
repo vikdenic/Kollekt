@@ -11,6 +11,6 @@
 
 @interface ScaleHelper : NSObject
 
-+ (void)scrollViewWillEndDragging:(UIScrollView *)scrollView forCollectionView:(UICollectionView *)collectionView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset transformCellValue:(CGAffineTransform)transformCellValue animationSpeed:(double)animationSpeed;
++ (void)scrollViewWillEndDragging:(UIScrollView *)scrollView forCollectionView:(UICollectionView *)collectionView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset;
 
 @end
