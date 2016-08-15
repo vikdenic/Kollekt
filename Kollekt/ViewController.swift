@@ -8,6 +8,7 @@
 
 import UIKit
 import ScaledVisibleCellsCollectionView
+import ChameleonFramework
 
 class ViewController: UIViewController {
 
@@ -17,9 +18,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         collectionView.setScaledDesginParam(scaledPattern: .horizontalCenter, maxScale: 1.1, minScale: 0.7, maxAlpha: 1.0, minAlpha: 0.5)
-
+        
         collectionView.delegate = self
         collectionView.dataSource = self
+
+        _ = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: false)
+
+        view.backgroundColor = GradientColor(.radial, frame: view.frame, colors: [UIColor.customPurple(), UIColor.customGreen()])
+    }
+
+    func update() {
+        collectionView.scaledVisibleCells()
     }
 
 }
@@ -33,14 +42,19 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
 
-        cell.layer.cornerRadius = 14
-        cell.clipsToBounds = true
-
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toDetail", sender: self)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+        (segue.destination as! DetailViewController).previousVC = self
     }
 
 }
@@ -63,19 +77,23 @@ extension ViewController: UIScrollViewDelegate {
     
 }
 
+extension UIColor {
+    class func customGreen() -> UIColor {
+        return UIColor(red: 112/255.0, green: 194/255.0, blue: 189/255.0, alpha: 1.0)
+    }
 
+    class func customPurple() -> UIColor {
+        return UIColor(red: 140/255.0, green: 90/255.0, blue: 190/255.0, alpha: 1.0)
+    }
 
+    class func customLightGray() -> UIColor {
+        return UIColor(red: 114/255.0, green: 114/255.0, blue: 114/255.0, alpha: 0.8)
+    }
 
-
-
-
-
-
-
-
-
-
-
+    class func customDarkGray() -> UIColor {
+        return UIColor(red: 51/255.0, green: 51/255.0, blue: 51/255.0, alpha: 0.8)
+    }
+}
 
 
 
